@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class='centreText'>Please log in! We're so excited to see you!</h1>
+<div class="login-grid-container">
+    <div class="Login">
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            {{ form.email.label }}<br>
+            {{ form.email }}<br><br>
+            {{ form.password.label }}<br>
+            {{ form.password }}<br><br>
+            {{ form.submit }}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

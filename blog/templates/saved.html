@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class='centreText'>Here are all the posts you've pretended to save for later!</h1>
+<div class='PostsFlex'>
+    {% for post in saved_posts %}
+        <div class='Post'>
+            <p><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a> by {{ post.user.username }} <small>({{ post.date }})</small></p>
+            <img src="{{ url_for('static', filename='img/' + post.image_file) }}">
+            <p>{{ post.content | safe | truncate(100) }}</p>
+            <p>Likes: {{ post.like.count() }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

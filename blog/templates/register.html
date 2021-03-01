@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1 class='centreText'>Register! PLEASE! We can't contain ourselves anymore!</h1>
+<p class='centreText'>Save us from the unending torment of never being graced with your divine presence!</p>
+<div class="register-grid-container">
+    <div class="Reg">
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            {{ form.firstname.label }}<br>
+            {{ form.firstname }}<br><br>
+            {{ form.surname.label }}<br>
+            {{ form.surname }}<br><br>
+            {{ form.username.label }}<br>
+            {{ form.username }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            <br>{{ form.email.label }}<br>
+            {{ form.email }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            <br>{{ form.password.label }}<br>
+            {{ form.password }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            <br>{{ form.confirm_password.label }}<br>
+            {{ form.confirm_password }}<br>
+            {% for error in form.confirm_password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            <br><br>{{ form.submit }}
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

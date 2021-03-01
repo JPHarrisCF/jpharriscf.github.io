@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class='centreText'>
+    <h1>Our Philosophy</h1>
+    <p>Here at Securiblog we take cyber security really seriously. <i>Seriously</i> seriously in fact.</p>
+    <img class='aboutImgs' alt="This cybersecurity scientist is looking intently at your data for security violations" src="{{ url_for('static', filename='img/securilab.jpg') }}"">
+    <p>We have a team of top scientists working around the clock to ensure only the purest, powerfullest, 
+    most <i>distilled</i> cybersecurity gets delivered to your Operating System of choice, whether it's Windows 98, 
+    Windows 2000 or even Windows XP. We have patented a completely unique security application named <i>SecuriSoft</i> 
+    that keeps all of your personal, public and private data totally secure. Your data is so secure that even you 
+    cannot access it!</p>
+    <img class='aboutImgs' alt="Our top cybersecurity scientists analysing SQL injections hidden in your online banking login page!" src="{{ url_for('static', filename='img/securilab2.jpg') }}">
+    <p>Our secret mountaintop laboratory, the <i>SecuriLab</i>, is hidden far from prying eyes deep in the 
+    monster-ridden wilderness of the Swiss Alps to ensure that the cybersecurity we deliver to you has not been 
+    adulterated or hacked with in any way. The walls are 5-metre thick and made out of a lead-cadmium alloy to 
+    ensure spy rays cannot penetrate our facility as well as causing would-be cyberdata thieves to develop radiation sickness.</p>
+    <img class='aboutImgs' alt="A scientist injecting cybersecurity into your private data" src="{{ url_for('static', filename='img/securilab3.jpg') }}">
+</div>
+
+{% endblock content %}

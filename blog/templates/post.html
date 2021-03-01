@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class='PostFlex'>
+    <div class='postpost'>
+        <img id='postImage' src="{{ url_for('static', filename='img/' + post.image_file) }}">
+        <p>"{{ post.title }}"</p>
+        <p>Author: {{ post.user.username }}</p>
+        <p>{{ post.content | safe }}</p>
+        <p>Likes: {{ post.like.count() }}</p>
+        {% for comment in comments %}
+        <div class='Comment'>
+            <p>"{{ comment.content | safe }}" &nbsp <small>Author: {{ comment.user.username }}</small></p>
+        </div>
+        {% endfor %}
+        {% if current_user.is_authenticated %} 
+            <p><form method="POST" action="{{ url_for('post_comment', post_id=post.id) }}">
+            {{ form.hidden_tag() }}
+            {{ form.comment.label }} {{ form.comment }}
+            {% for error in form.comment.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+            <br>{{ form.submit() }}
+            </form></p>
+            {% if if_liked %}
+                <p><form method="POST" action="{{ url_for('submit_unlike', post_id=post.id) }}">
+                {{ unlike.submit() }}
+                </form></p>
+            {% else %}
+                <p><form method="POST" action="{{ url_for('submit_like', post_id=post.id) }}">
+                {{ like.submit() }}
+                </form></p>
+            {% endif %}
+            {% if if_saved %}
+                <p><form method="POST" action="{{ url_for('submit_unsave', post_id=post.id) }}">
+                {{ forget.submit() }}
+                </form></p>
+            {% else %}
+                <p><form method="POST" action="{{ url_for('save_this', post_id=post.id) }}">
+                {{ save.submit }}
+                </form></p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
